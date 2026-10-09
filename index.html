@@ -28,12 +28,12 @@ strong{color:#032D60}
 <tr>
 <td>1. Jean-Christophe's journey: website, email, back to the website</td>
 <td>25 min</td>
-<td>UC3, UC4, UC2</td>
+<td>UC3, UC2, UC4 (partial)</td>
 </tr>
 <tr>
 <td>2. Behind the scenes: how a business user builds it</td>
 <td>30 min</td>
-<td>UC1, UC3, UC4</td>
+<td>UC1, UC2, UC3</td>
 </tr>
 <tr>
 <td>3. The same customer in the CRM</td>
@@ -80,129 +80,91 @@ workaround: you'll hear me say it each time."</p>
 </blockquote>
 <h3 id="screen-11-home-page-first-visit">Screen 1.1 — Home page, first visit</h3>
 <p><strong>Show:</strong> <code>index.html</code> in the private window. Point at the hero banner and the promo strip "La rentrée démarre
-FOOORT !".</p>
+FOOORT !". Open the console and copy the <code>deviceId</code> from the line "Events translated for Data Cloud".</p>
 <p><strong>Say:</strong>
-"This is Jean-Christophe's first visit. We don't know him. He sees what every new visitor sees: the standard
-hero, the standard promotion.
-But from this first page, a small piece of JavaScript on the site is already recording what he does: pages,
-products, cart. We call it the sitemap. It's the only technical piece on the website, and I'll come back to it."</p>
+"I'm now on RAJA's website. First of all, it's a mock-up I built for this demo: 283 products in 50 families, in
+French and English. I'm Jean-Christophe, from Nova Logistique, and I land here as an anonymous visitor. This home
+page is the standard one everybody sees: the promo strip, the hero.
+From now on, the personalization platform records what I do (pages, products, clicks, cart) through a small
+tracker on the site, and gives this browser an anonymous ID. Here it is. On a real site, this only starts once the
+visitor accepts cookies: no consent, no tracking, no personalization."</p>
 <p><strong>UC:</strong> UC3 (baseline), UC1 (tracking).</p>
 <h3 id="screen-12-category-then-a-product">Screen 1.2 — Category, then a product</h3>
 <p><strong>Show:</strong> click the category "Caisses, cartons, boîtes" → click the product "Caisse carton brune simple cannelure
 RAJA". Go back to the home page.</p>
 <p><strong>Say:</strong>
-"He browses boxes, opens one product, and leaves. Still anonymous.
-Behind the scenes, Salesforce now knows one thing about this anonymous visitor: he's interested in boxes.
-It keeps a score for that, per category. We call it an affinity score. It goes up every time he looks at, adds
-to cart or buys something in a category."</p>
+"Still anonymous, I'm interested in boxes, so I click on the category, then on a product. Behind the scenes, the
+platform now knows I'm interested in this category. It keeps a score per category, which we call an affinity
+score. It goes up every time I view, add to cart or buy something in that category."</p>
 <p><strong>UC:</strong> UC3.</p>
 <h3 id="screen-13-home-page-he-comes-back">Screen 1.3 — Home page, he comes back</h3>
 <p><strong>Show:</strong> reload <code>index.html</code>. The personalized hero banner appears.</p>
 <p><strong>Say:</strong>
-"He comes back. Still no login, but the browser is the same, so we recognise him.
-The hero has changed: it now speaks to someone interested in boxes.
-Nobody wrote 'show this to Jean-Christophe'. The rule is: 'if a visitor's affinity for boxes is above zero, show
-the boxes banner'. Any visitor who behaves like him gets it, from his very first product view."</p>
+"Now I go back to the home page. Still unknown, but the platform captured my interest and shows me a new hero
+banner that pushes me to continue my research. Nobody wrote 'show this to Jean-Christophe': the rule is 'interest
+in boxes, show the boxes banner'. Any visitor who behaves like me gets it."</p>
 <p><strong>UC:</strong> UC3.</p>
 <h3 id="screen-13b-what-salesforce-knows-about-the-anonymous-visitor">Screen 1.3b — What Salesforce knows about the anonymous visitor</h3>
-<p><strong>Show:</strong> switch to the Personalization app. Open the utility bar panel "Anonymous visitor" and look up the device ID
-of the private window (copied before the session). Point at "Unified Individual", "Affinité catégorie" ("Caisses,
-cartons, boites" 1.00) and "Engagement Timeline" ("Produit consulté" PR-001-01, then two "Page vue": the category
-page and the home page).</p>
+<p><strong>Show:</strong> switch to the Personalization app. Open the utility bar panel "Anonymous visitor" and paste the device ID
+copied in Screen 1.1. Point at "Unified Individual", "Affinité catégorie" ("Caisses, cartons, boites" 1.00) and
+"Engagement Timeline" ("Produit consulté" PR-001-01, then two "Page vue": the category page and the home page).</p>
 <p><strong>Say:</strong>
-"Let's look at it from Salesforce's side. This is the profile of the visitor in my private window, in real time.
-No name, no email: just an ID for this browser.
-Here is the affinity score we just talked about: 'Caisses, cartons, boites'. And here, his journey a few seconds
-ago: the home page, the boxes category, the product he opened.
-That's exactly what the hero banner rule read to decide what to show him."</p>
+"Let's pause for a moment and take a quick look at the platform. Here's this browser's profile, in real time: no
+name, just the ID. Here's my affinity score for boxes, and here's my browsing timeline. That's exactly what the
+hero banner rule just read."</p>
 <p><strong>UC:</strong> UC3, UC1 (tracking).</p>
 <h3 id="screen-14-product-page-two-recommendation-zones">Screen 1.4 — Product page, two recommendation zones</h3>
 <p><strong>Show:</strong> click the banner → category → product. Scroll to "Les clients ont également consulté", then to "Les
 clients ont également acheté".</p>
 <p><strong>Say:</strong>
-"On the product page we have two recommendation zones.
-The first one, 'customers also viewed', shows similar products. Look: it shows one product per family. On raja.fr,
-this box family has 138 references; we don't want the zone filled with ten sizes of the same box.
-The second one, 'customers also bought', shows complementary products: what people bought in the same order.
-And you won't see the same product twice on this page."</p>
+"I click on the hero banner's button, then on the product I came for. Now it gets interesting: this page has two
+recommendation zones. The first one shows what other visitors also viewed, one product per family. On raja.fr this
+box family has 138 references, and we don't want ten sizes of the same box. The second one, below, shows what
+people bought together with this box to complete their order."</p>
 <p><strong>UC:</strong> UC3, UC4.</p>
-<h3 id="screen-15-variant-table-uc4-honest-moment">Screen 1.5 — Variant table (UC4, honest moment)</h3>
-<p><strong>Show:</strong> scroll back up to "Tableau des références", select reference CAS01A.</p>
-<p><strong>Say:</strong>
-"This is RAJA's reality: one product, many references. Use case 4 asks how the platform handles that.
-Here is the honest answer. Salesforce Personalization has no built-in parent/variant hierarchy today.
-We worked around it with data: every product carries its family, and the 'similar products' recommender is told
-to keep only one product per family. That's configuration, no code.
-The 'no duplicates between the two zones' part is different: it's done on the website, in a few lines of
-JavaScript, because the platform removes duplicates inside one zone but not across two zones. We flagged both
-points in our answer, and they're on our list for the product team."</p>
-<p><em>(If the demo device gets the "ML add to cart" variation and it lists several sizes of one box:)</em>
-"You can see the limit here: this zone is currently in an A/B test, and the AI version doesn't know about
-families, so it shows several sizes of the same box. That's exactly why we built the family rule for the other
-zone."</p>
-<p><strong>UC:</strong> UC4.</p>
-<h3 id="screen-16-add-to-cart-cart-page">Screen 1.6 — Add to cart, cart page</h3>
+<h3 id="screen-15-add-to-cart-cart-page">Screen 1.5 — Add to cart, cart page</h3>
 <p><strong>Show:</strong> add CAS01A to the cart (only this product: the normal window's cart holds the same one) → open the cart.
 Point at "Produits fréquemment achetés avec".</p>
 <p><strong>Say:</strong>
-"He adds the box to his cart. The cart shows products frequently bought with what's in it: tape, bubble wrap.
-These come from real order history: 'people who bought this box also bought this tape'.
-Notice it also suggests another size of the same box. That's on purpose: B2B buyers often order several sizes."</p>
+"Let's add a product to my cart: the CAS01A box. The cart recommends what's frequently bought with it: tape, other
+box sizes. It's the same recommender as on the product page, reused in a second zone, on another page. One
+recommender, many zones."</p>
 <p><strong>UC:</strong> UC3.</p>
-<h3 id="screen-17-login-and-he-still-doesnt-order">Screen 1.7 — Login, and he still doesn't order</h3>
+<h3 id="screen-16-login-and-he-still-doesnt-order">Screen 1.6 — Login, and he still doesn't order</h3>
 <p><strong>Show:</strong> "Valider mon panier" → login page → enter Jean-Christophe's email → back on the cart. Stop there: don't go to
 the home page in this window. Close the tab.</p>
 <p><strong>Say:</strong>
-"Now he logs in. This is the key moment.
-Until now he was an anonymous visitor. Now Salesforce links this browser to Jean-Christophe Tran, the contact we
-already have in the CRM, through his email.
-We call this identity resolution. It's what lets us use the same profile on the website, in email and in the CRM.
-And then, like many buyers, he leaves without ordering. Let's see what happens next."</p>
+"I want to complete my purchase, so I need to log in. Now that I'm logged in, the platform knows who I am. It links
+this browser to the Jean-Christophe we already have in the CRM, through his email. That's identity resolution: one
+profile for web, email and CRM, with all his history.
+But I have something urgent to deal with, so I leave without ordering."</p>
 <p><strong>UC:</strong> UC2 (identity), UC3.</p>
-<h3 id="screen-18-abandoned-cart-flow">Screen 1.8 — Abandoned-cart flow</h3>
-<p><strong>Show:</strong> Marketing Cloud Advanced flow on the Marketing Trigger "Abandoned Shopping Cart": "Abandoned cart email
-1" → wait 3 days → decision "Cart converted?" → Yes: "Thank You" email / No: "Best Follow-Up per Customer" (second
-reminder or no reminder).</p>
-<p><strong>Say:</strong>
-"Marketing Cloud picks up the abandoned cart and starts this flow: a reminder email, then a wait, then a check: did
-he order? If yes, a thank-you; if not, a second reminder."</p>
-<p><strong>UC:</strong> UC2.</p>
-<h3 id="screen-19-the-email-built-in-marketing-cloud">Screen 1.9 — The email, built in Marketing Cloud</h3>
-<p><strong>Show:</strong> open "Abandoned cart email 1". Show the recommendation block (Repeater on the data source "Personalization
-Recommendations Data Provider", recommender "RAJA ML add to cart V2").</p>
-<p><strong>Say:</strong>
-"Here is the email. The products block at the bottom isn't a copy of a list. It calls the same AI recommender we
-use on the website. One recommender, one logic, on the site and in the email."</p>
-<p><strong>UC:</strong> UC2.</p>
-<h3 id="screen-110-the-email-in-his-inbox-back-to-the-website">Screen 1.10 — The email in his inbox, back to the website</h3>
+<h3 id="screen-17-the-email-in-his-inbox-back-to-the-website">Screen 1.7 — The email in his inbox, back to the website</h3>
 <p><strong>Show:</strong> switch to the inbox tab (normal window). Open "Jean-Christophe votre panier vous attend". Point at the first
 name, the "Reprendre mon panier" button and "Ces produits pourraient vous intéresser". Click "Reprendre mon panier":
 the cart opens in a new tab.</p>
 <p><strong>Say:</strong>
-"This is what Jean-Christophe receives. His first name, a button back to his cart, and products picked for him.
-He clicks, and here is his cart, waiting for him.
-Notice he's now on his usual browser, not the one he started on. It doesn't matter: Salesforce knows it's the same
-person."</p>
+"In the meantime, RAJA sent me an abandoned-cart email. Let's have a look. It invites me to complete my order, and
+it also has a recommendations block. I'll show you how it's built later.
+Now I'm ready, so I click the button. I'm back on my cart with my product, perfect. And notice I'm now on my usual
+browser: Salesforce knows it's the same person."</p>
 <p><strong>UC:</strong> UC2.</p>
-<h3 id="screen-111-home-page-a-known-customer">Screen 1.11 — Home page, a known customer</h3>
+<h3 id="screen-18-home-page-a-known-customer">Screen 1.8 — Home page, a known customer</h3>
 <p><strong>Show:</strong> go to the home page. Point at the promo strip (coffee machine offer from 750 € HT) and "Ces produits
 pourraient vous intéresser".</p>
 <p><strong>Say:</strong>
-"Back on the home page. Two things changed since his first visit.
-The promotion: known customers who have already ordered get a different offer, a coffee machine from 750 €.
-And the recommendations: Jean-Christophe is a frequent buyer, ten orders or more. For frequent buyers we use the
-AI recommender that learns from each customer's own history, the same one as in the email. He gets boxes, because
-that's what he buys.
-A new visitor in the same zone would get recommendations based on his interests instead. Same zone, different
-logic, depending on who you are. I'll show you how that rule is built in a minute."</p>
+"Back to the home page. Look at the promo strip: it's now personalized for me, because the rule says 'customers
+with at least one order'. And below, the recommendations: I'm a frequent buyer, ten orders or more, so I get the AI
+recommender."</p>
 <p><strong>UC:</strong> UC3.</p>
-<h3 id="screen-112-fren-switch">Screen 1.12 — FR/EN switch</h3>
-<p><strong>Show:</strong> click "EN" on the home page.</p>
+<h3 id="screen-19-fren-switch">Screen 1.9 — FR/EN switch</h3>
+<p><strong>Show:</strong> click "EN" on the home page. Point only at the "For You" zone (hero, promo strip and other zones stay in
+French).</p>
 <p><strong>Say:</strong>
-"RAJA runs 27 sites in 19 countries. One click: the same recommendations, now in English, with UK prices in pounds.
-The products are the same, because the recommender doesn't change. Only the way they're displayed changes: the
-name, the price, the currency. I'll show you how in a minute."</p>
-<p><em>(Only the home "For You" zone is localized; hero, promo strip and other zones stay in French. If asked:)</em>
+"RAJA runs 27 sites in 19 countries. Let's simulate the UK site: I click EN. The recommendations switch to English,
+with UK prices in pounds. Same products, because the recommender doesn't change, only the display. The platform
+does that, and I'll show you how later."</p>
+<p><em>(If asked why banners stay in French:)</em>
 "We localized one zone to show the mechanism. Banners are content: you'd create one version per language."</p>
 <p><strong>UC:</strong> UC3 (multi-country).</p>
 <hr />
@@ -284,6 +246,21 @@ decision "Coffee Machine Offer Known Customers".</p>
 The hero card says 'interest in boxes above zero'. The promo card says 'at least one order'.
 That's exactly what Jean-Christophe saw earlier."</p>
 <p><strong>UC:</strong> UC3.</p>
+<h3 id="screen-25b-abandoned-cart-flow">Screen 2.5b — Abandoned-cart flow</h3>
+<p><strong>Show:</strong> Marketing Cloud Advanced flow on the Marketing Trigger "Abandoned Shopping Cart": "Abandoned cart email
+1" → wait 3 days → decision "Cart converted?" → Yes: "Thank You" email / No: "Best Follow-Up per Customer" (second
+reminder or no reminder).</p>
+<p><strong>Say:</strong>
+"Marketing Cloud picks up the abandoned cart and starts this flow: a reminder email, then a wait, then a check: did
+he order? If yes, a thank-you; if not, a second reminder."</p>
+<p><strong>UC:</strong> UC2.</p>
+<h3 id="screen-25c-the-email-built-in-marketing-cloud">Screen 2.5c — The email, built in Marketing Cloud</h3>
+<p><strong>Show:</strong> open "Abandoned cart email 1". Show the recommendation block (Repeater on the data source "Personalization
+Recommendations Data Provider", recommender "RAJA ML add to cart V2").</p>
+<p><strong>Say:</strong>
+"Here is the email. The products block at the bottom isn't a copy of a list. It calls the same AI recommender we
+use on the website. One recommender, one logic, on the site and in the email."</p>
+<p><strong>UC:</strong> UC2.</p>
 <h3 id="screen-26-web-personalization-manager-build-live-preview-only">Screen 2.6 — Web Personalization Manager (build live, preview only)</h3>
 <p><strong>Show:</strong> in the normal window, open <code>localhost:8765/index.html?sf_personalization_wpm</code> and log in to Salesforce.
 Then, with the labels from the Salesforce doc:
@@ -399,6 +376,7 @@ Three: one recommender for the website, the CRM and email. You saw the same prod
 set up, with three building blocks and a low-code editor;
 cross-channel, with one profile and one recommender everywhere;
 personalization, from an anonymous visitor's first click to a known buyer;
-variants, handled with a family rule, and the gaps we told you about;
+variants: one product per family on the product page; for the parent/variant hierarchy, our product team can go
+deeper;
 and testing, with A/B tests and the limits we were honest about.
 Questions?"</p></main></body></html>
