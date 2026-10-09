@@ -27,12 +27,12 @@ strong{color:#032D60}
 </tr>
 <tr>
 <td>1. Jean-Christophe's journey: website, email, back to the website</td>
-<td>30 min</td>
+<td>25 min</td>
 <td>UC3, UC4, UC2</td>
 </tr>
 <tr>
 <td>2. Behind the scenes: how a business user builds it</td>
-<td>25 min</td>
+<td>30 min</td>
 <td>UC1, UC3, UC4</td>
 </tr>
 <tr>
@@ -42,12 +42,12 @@ strong{color:#032D60}
 </tr>
 <tr>
 <td>4. Testing and measuring</td>
-<td>10 min</td>
+<td>15 min</td>
 <td>UC5</td>
 </tr>
 <tr>
 <td>5. Wrap-up</td>
-<td>10 min</td>
+<td>5 min</td>
 <td>all</td>
 </tr>
 <tr>
@@ -74,7 +74,7 @@ I'll show you the journey first, as the customer sees it. Then I'll open the hoo
 user builds it, without code. Then email and CRM. Then testing. I'll be clear about what is native and what is a
 workaround: you'll hear me say it each time."</p>
 <hr />
-<h2 id="act-1-jean-christophes-journey-website-email-back-to-the-website-30-min">Act 1 — Jean-Christophe's journey: website, email, back to the website (30 min)</h2>
+<h2 id="act-1-jean-christophes-journey-website-email-back-to-the-website-25-min">Act 1 — Jean-Christophe's journey: website, email, back to the website (25 min)</h2>
 <blockquote>
 <p>Use the fresh private window. Jean-Christophe is anonymous: no cookie, no login.</p>
 </blockquote>
@@ -206,7 +206,7 @@ name, the price, the currency. I'll show you how in a minute."</p>
 "We localized one zone to show the mechanism. Banners are content: you'd create one version per language."</p>
 <p><strong>UC:</strong> UC3 (multi-country).</p>
 <hr />
-<h2 id="act-2-behind-the-scenes-how-a-business-user-builds-it-25-min">Act 2 — Behind the scenes: how a business user builds it (25 min)</h2>
+<h2 id="act-2-behind-the-scenes-how-a-business-user-builds-it-30-min">Act 2 — Behind the scenes: how a business user builds it (30 min)</h2>
 <blockquote>
 <p>Switch to Salesforce, Personalization app.</p>
 </blockquote>
@@ -222,7 +222,16 @@ Two: the <strong>personalization point</strong>. That's a spot in the shop windo
 zone, the cart zone. A personalization point answers: where?
 Three: the <strong>personalization decision</strong>. That's the instruction card stuck on the shelf: 'for frequent buyers, use
 the AI salesperson; for everyone else, use the interests salesperson'. A decision answers: for whom, and with what?
-Recommender, point, decision. Which products, where, for whom."</p>
+Recommender, point, decision. Which products, where, for whom.
+Let me spend one more minute on each block.
+A recommender comes in two kinds. <strong>Rule-based</strong>: you choose the ranking, from a calculation in Data 360: top
+sellers, most viewed, bought together. Transparent, works from day one, and you can explain every result. <strong>AI, or
+objective-based</strong>: you choose a goal, add to cart, clicks or revenue, and a deep-learning model ranks products for
+each person. It retrains every day, and it can recommend a brand-new product from its description.
+A personalization point is a zone on the site, plus its format: which product fields come back, and how many
+products.
+A decision is a rule on that zone: who it's for, with which recommender or content, and in which priority. One
+visitor, one decision per zone."</p>
 <p><strong>UC:</strong> UC1.</p>
 <h3 id="screen-22-recommenders">Screen 2.2 — Recommenders</h3>
 <p><strong>Show:</strong> Recommenders list (8 recommenders). Open <code>RAJA Co-Buy</code>, then <code>RAJA ML add to cart V2</code>.</p>
@@ -233,9 +242,17 @@ screen'. It's transparent: you can explain every result.
 And AI ones, like 'ML add to cart': we give it a goal, here 'maximise add-to-cart', and a deep-learning model
 finds the products most likely to reach that goal for this person. It can also recommend new products from their
 description, before anyone has bought them.
-On top of the AI, the marketer keeps control with filters. An inclusion filter says 'only recommend products
-that…', an exclusion filter says 'never recommend products that…'. Here we have one exclusion: never recommend the
-product the customer is looking at right now. Without it, the AI could suggest the very box he already has on screen.
+On top of the AI, the marketer keeps control with filters. Inclusion: 'only recommend products that…'. Exclusion:
+'never recommend products that…'. A filter can compare a product with a fixed value, with the product on screen, or
+with anything we know about the customer in Data 360.
+Inclusion examples: only products in stock. Only products of the same colour or range as the one on screen. Only
+products under a price, for a budget zone. Only products of a seasonal range between two dates.
+Exclusion examples: here, the product the customer is looking at right now, otherwise the AI could suggest the very
+box he already has on screen. Products he has already bought, though for RAJA consumables you may want the
+opposite. Expired offers. Clearance items in a full-price zone.
+And customer data works on both levels. A segment like 'frequent buyers' can choose <em>who</em> gets this recommender, in
+the decision rule, as you'll see in a minute. It can also choose <em>which products</em>: for example, products reserved
+for members of a segment.
 Each recommender can have a backup: if it can't find enough products, it falls back to top sellers. The zone is
 never empty."</p>
 <p><strong>UC:</strong> UC1, UC3.</p>
@@ -275,6 +292,10 @@ Then, with the labels from the Salesforce doc:
 3. Select the experience template "Product Recommendations Template" → <strong>Next</strong>.
 4. <strong>Location</strong> tab → <strong>Current Page Type</strong>. <strong>Display Method</strong> → the one used in rehearsal (e.g. <strong>Replace an
    Element</strong>, then click the home recommendations block).
+   Before validating, open the <strong>Display Method</strong> list and read the options: <strong>Replace a Content Zone</strong>, <strong>Replace
+   an Element</strong>, <strong>Add Before an Element</strong>, <strong>Add After an Element</strong>, <strong>Add an Overlay</strong> (<strong>When to Display</strong>:
+   <strong>Immediately</strong>, <strong>Exit Intent</strong>, <strong>Element Click</strong>, <strong>Scroll Percentage</strong>). Then <strong>Location</strong>: <strong>Current Page
+   Type</strong> vs <strong>Page URL</strong> (wildcards).
 5. <strong>Content</strong> → <strong>Preview Settings</strong> tab.
 6. <strong>Personalization Decisions and Cohorts</strong> menu → "ML Frequent Buyer V4" → <strong>Preview</strong>; then "For You All Visitor
    V4" → <strong>Preview</strong>. Same zone, two logics.</p>
@@ -285,7 +306,12 @@ Then, with the labels from the Salesforce doc:
 marketer would do it.
 I open our website with the Web Personalization Manager editor. I click on the zone I want to change. I pick a template, I pick the
 personalization point. And I preview it, as if I were Jean-Christophe, or as if I were a new visitor.
-No developer, no release. When I'm happy, I switch it to Enabled and it's live. I won't do it today, so we don't
+Three choices, all with the mouse. Where on the site: this page type, so every product page at once, or a list of
+URLs. Where on the page: replace a block, add before or after it, or an overlay, for example when the visitor is
+about to leave, or after he scrolls halfway. And how it looks: a template that your design team builds once and
+marketers reuse.
+Then I track the clicks, and I preview as a given decision, as a test group, or as a real customer.
+No developer, no release. Nothing goes live until I switch the State to Enabled. I won't do it today, so we don't
 change the site during the demo."</p>
 <p><strong>UC:</strong> UC1, UC3.</p>
 <h3 id="screen-27-data-behind-it-short">Screen 2.7 — Data behind it (short)</h3>
@@ -321,19 +347,24 @@ the same engine. If he calls, the agent can suggest the right products.
 So: website, email, CRM. One profile, one set of recommendations."</p>
 <p><strong>UC:</strong> UC2.</p>
 <hr />
-<h2 id="act-4-testing-and-measuring-10-min">Act 4 — Testing and measuring (10 min)</h2>
+<h2 id="act-4-testing-and-measuring-15-min">Act 4 — Testing and measuring (15 min)</h2>
 <h3 id="screen-41-the-experiment">Screen 4.1 — The experiment</h3>
 <p><strong>Show:</strong> Experiments tab → "PDP Also Bought Co-Buy vs ML" (on personalization point "PDP Customers Also Bought"):
 two variations 50/50, "Business as Usual" (control, "Defer response to the Personalization Decisions") and "ML add
 to cart"; primary metric RAJA Add To Cart, secondary Purchase and Product View.</p>
 <p><strong>Say:</strong>
-"How do you know the AI does better than a simple rule? You test it.
-On the product page zone 'customers also bought', half the visitors get the current logic, Co-Buy. The other half
-get the AI recommender. We measure add-to-cart first, purchases and product views second.
-The current logic is called 'Business as Usual'. Technically, that group 'defers': it gets no test recommender and
-simply sees what the zone shows anyway.
-Results are read the Bayesian way: Salesforce tells you the probability that the AI version beats the current one.
-You need at least 1,000 people per group before it declares a winner, so on our demo site there's no result yet."</p>
+"How do you know the AI does better than a simple rule? You test it, directly on the zone.
+Four settings. One, the <strong>primary metric</strong>: the one that decides the winner, here add to cart. <strong>Secondary
+metrics</strong>, purchases and product views, are watched but don't decide.
+Two, <strong>who enters the test</strong>: everyone, or only a segment, a country, a page type, with the same rules as decisions.
+Three, <strong>the groups</strong>. The first group is always the reference, here 'Business as Usual', the current Co-Buy logic.
+Then one or several variations: that's A/B/n. Here it's A/B, 50/50. We could add a third group, top sellers, and
+split 34/33/33, as long as it adds up to 100%. A visitor stays in the same group for the whole test, and the test
+takes priority over the zone's normal decisions.
+Four, <strong>when to stop</strong>: here at least 14 days and at most 90, at least 1,000 people per group, and a 95% confidence
+threshold. Once started, the test can't be edited, so the comparison stays fair.
+Results come in daily, the Bayesian way: for each group, the lift in %, a credible interval, the chance to beat the
+reference, and the chance to beat all groups. On our demo site there's no result yet, the traffic is too small."</p>
 <p><strong>UC:</strong> UC5.</p>
 <h3 id="screen-42-whats-not-there-yet-honest-moment">Screen 4.2 — What's not there yet (honest moment)</h3>
 <p><strong>Show:</strong> stay on the experiment.</p>
@@ -347,7 +378,7 @@ you'd export the data to your BI.
 Both are on our list for the product team, and our product management team is here if you want to go deeper."</p>
 <p><strong>UC:</strong> UC5.</p>
 <hr />
-<h2 id="act-5-wrap-up-10-min">Act 5 — Wrap-up (10 min)</h2>
+<h2 id="act-5-wrap-up-5-min">Act 5 — Wrap-up (5 min)</h2>
 <h3 id="screen-51-constat-slide-1-donut">Screen 5.1 — Constat slide 1 (donut)</h3>
 <p><strong>Show:</strong> slide "RAJA requirements: what SP and MCP each cover".</p>
 <p><strong>Say:</strong>
