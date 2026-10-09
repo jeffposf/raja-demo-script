@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>RAJA — Demo script & talk track</title><meta name="robots" content="noindex">
+<style>
+body{margin:0;background:#F3F3F3;font-family:-apple-system,Arial,sans-serif;color:#16325C;line-height:1.55}
+main{max-width:900px;margin:0 auto;padding:32px 40px 80px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+h1{color:#032D60;border-bottom:3px solid #0176D3;padding-bottom:8px}
+h2{margin-top:48px;padding:10px 14px;background:#032D60;color:#fff;border-radius:8px}
+h3{margin-top:32px;padding-left:10px;border-left:5px solid #0176D3}
+blockquote,p:has(> strong:first-child){margin:10px 0}
+blockquote{border-left:4px solid #90D0FE;background:#EAF4FC;margin:10px 0;padding:8px 14px;font-style:italic}
+code{background:#F4F6F9;padding:1px 5px;border-radius:4px;font-size:.92em}
+table{border-collapse:collapse;width:100%;font-size:.92em}th,td{border:1px solid #DDDBDA;padding:6px 8px;vertical-align:top}
+th{background:#F4F6F9;text-align:left}
+strong{color:#032D60}
+</style></head><body><main><h1 id="raja-soutenance-demo-script-talk-track-13102026">RAJA soutenance — Demo script &amp; talk track (13/10/2026)</h1>
+<p>Duration: 1h30 demo, 5 acts, all 5 RAJA use cases covered (no imposed order).</p>
+<table>
+<thead>
+<tr>
+<th>Act</th>
+<th>Time</th>
+<th>Use cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0. Intro</td>
+<td>5 min</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1. Jean-Christophe's journey on the website</td>
+<td>25 min</td>
+<td>UC3, UC4, UC2 (identity)</td>
+</tr>
+<tr>
+<td>2. Behind the scenes: how a business user builds it</td>
+<td>25 min</td>
+<td>UC1, UC3, UC4</td>
+</tr>
+<tr>
+<td>3. Same intelligence, every channel</td>
+<td>10 min</td>
+<td>UC2</td>
+</tr>
+<tr>
+<td>4. Testing and measuring</td>
+<td>10 min</td>
+<td>UC5</td>
+</tr>
+<tr>
+<td>5. Wrap-up</td>
+<td>10 min</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Buffer</td>
+<td>5 min</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>RAJA use cases (Vendor Demonstration Guide):
+UC1 How to set up · UC2 Integrations and cross-channel usage · UC3 Personalization possibilities ·
+UC4 Product hierarchy, variants and recommendation deduplication · UC5 Recommendation testing, measurement and incrementality.</p>
+<p>How to read each screen: <strong>Show</strong> = what you click · <strong>Say</strong> = talk track · <strong>UC</strong> = use case covered.</p>
+<hr />
+<h2 id="act-0-intro-5-min">Act 0 — Intro (5 min)</h2>
+<h3 id="screen-01-architecture-slide">Screen 0.1 — Architecture slide</h3>
+<p><strong>Show:</strong> the HLD slide.</p>
+<p><strong>Say:</strong>
+"Today I'm going to show you one customer, Jean-Christophe, a B2B buyer at Nova Logistique, and follow him
+across three visits to a RAJA website, an email, and your CRM.
+Everything you'll see runs live on Salesforce Personalization, on top of Data 360, the customer data platform.
+The website is a demo copy of raja.fr, with a catalog of 283 products in 50 families.
+I'll show you the journey first, as the customer sees it. Then I'll open the hood and show you how a business
+user builds it, without code. Then email and CRM. Then testing. I'll be clear about what is native and what is a
+workaround: you'll hear me say it each time."</p>
+<hr />
+<h2 id="act-1-jean-christophes-journey-on-the-website-25-min">Act 1 — Jean-Christophe's journey on the website (25 min)</h2>
+<blockquote>
+<p>Use the fresh private window. Jean-Christophe is anonymous: no cookie, no login.</p>
+</blockquote>
+<h3 id="screen-11-home-page-first-visit">Screen 1.1 — Home page, first visit</h3>
+<p><strong>Show:</strong> <code>index.html</code> in the private window. Point at the hero banner and the promo strip "La rentrée démarre
+FOOORT !".</p>
+<p><strong>Say:</strong>
+"This is Jean-Christophe's first visit. We don't know him. He sees what every new visitor sees: the standard
+hero, the standard promotion.
+But from this first page, a small piece of JavaScript on the site is already recording what he does: pages,
+products, cart. We call it the sitemap. It's the only technical piece on the website, and I'll come back to it."</p>
+<p><strong>UC:</strong> UC3 (baseline), UC1 (tracking).</p>
+<h3 id="screen-12-category-then-a-product">Screen 1.2 — Category, then a product</h3>
+<p><strong>Show:</strong> click the category "Caisses, cartons, boîtes" → click the product "Caisse carton brune simple cannelure
+RAJA". Go back to the home page.</p>
+<p><strong>Say:</strong>
+"He browses boxes, opens one product, and leaves. Still anonymous.
+Behind the scenes, Salesforce now knows one thing about this anonymous visitor: he's interested in boxes.
+It keeps a score for that, per category. We call it an affinity score. It goes up every time he looks at, adds
+to cart or buys something in a category."</p>
+<p><strong>UC:</strong> UC3.</p>
+<h3 id="screen-13-home-page-he-comes-back">Screen 1.3 — Home page, he comes back</h3>
+<p><strong>Show:</strong> reload <code>index.html</code>. The personalized hero banner appears.</p>
+<p><strong>Say:</strong>
+"He comes back. Still no login, but the browser is the same, so we recognise him.
+The hero has changed: it now speaks to someone interested in boxes.
+Nobody wrote 'show this to Jean-Christophe'. The rule is: 'if a visitor's affinity for boxes is above zero, show
+the boxes banner'. Any visitor who behaves like him gets it, from his very first product view."</p>
+<p><strong>UC:</strong> UC3.</p>
+<h3 id="screen-13b-what-salesforce-knows-about-the-anonymous-visitor">Screen 1.3b — What Salesforce knows about the anonymous visitor</h3>
+<p><strong>Show:</strong> switch to the Personalization app. Open the utility bar panel "Anonymous visitor" and look up the device ID
+of the private window (copied before the session). Point at "Unified Individual", "Affinité catégorie" ("Caisses,
+cartons, boites" 1.00) and "Engagement Timeline" ("Produit consulté" PR-001-01, then two "Page vue": the category
+page and the home page).</p>
+<p><strong>Say:</strong>
+"Let's look at it from Salesforce's side. This is the profile of the visitor in my private window, in real time.
+No name, no email: just an ID for this browser.
+Here is the affinity score we just talked about: 'Caisses, cartons, boites'. And here, his journey a few seconds
+ago: the home page, the boxes category, the product he opened.
+That's exactly what the hero banner rule read to decide what to show him."</p>
+<p><strong>UC:</strong> UC3, UC1 (tracking).</p>
+<h3 id="screen-14-product-page-two-recommendation-zones">Screen 1.4 — Product page, two recommendation zones</h3>
+<p><strong>Show:</strong> click the banner → category → product. Scroll to "Les clients ont également consulté", then to "Les
+clients ont également acheté".</p>
+<p><strong>Say:</strong>
+"On the product page we have two recommendation zones.
+The first one, 'customers also viewed', shows similar products. Look: it shows one product per family. On raja.fr,
+this box family has 138 references; we don't want the zone filled with ten sizes of the same box.
+The second one, 'customers also bought', shows complementary products: what people bought in the same order.
+And you won't see the same product twice on this page."</p>
+<p><strong>UC:</strong> UC3, UC4.</p>
+<h3 id="screen-15-variant-table-uc4-honest-moment">Screen 1.5 — Variant table (UC4, honest moment)</h3>
+<p><strong>Show:</strong> scroll back up to "Tableau des références", select reference CAS01A.</p>
+<p><strong>Say:</strong>
+"This is RAJA's reality: one product, many references. Use case 4 asks how the platform handles that.
+Here is the honest answer. Salesforce Personalization has no built-in parent/variant hierarchy today.
+We worked around it with data: every product carries its family, and the 'similar products' recommender is told
+to keep only one product per family. That's configuration, no code.
+The 'no duplicates between the two zones' part is different: it's done on the website, in a few lines of
+JavaScript, because the platform removes duplicates inside one zone but not across two zones. We flagged both
+points in our answer, and they're on our list for the product team."</p>
+<p><em>(If the demo device gets the "ML add to cart" variation and it lists several sizes of one box:)</em>
+"You can see the limit here: this zone is currently in an A/B test, and the AI version doesn't know about
+families, so it shows several sizes of the same box. That's exactly why we built the family rule for the other
+zone."</p>
+<p><strong>UC:</strong> UC4.</p>
+<h3 id="screen-16-add-to-cart-cart-page">Screen 1.6 — Add to cart, cart page</h3>
+<p><strong>Show:</strong> add CAS01A to the cart → open the cart. Point at "Produits fréquemment achetés avec".</p>
+<p><strong>Say:</strong>
+"He adds the box to his cart. The cart shows products frequently bought with what's in it: tape, bubble wrap.
+These come from real order history: 'people who bought this box also bought this tape'.
+Notice it also suggests another size of the same box. That's on purpose: B2B buyers often order several sizes."</p>
+<p><strong>UC:</strong> UC3.</p>
+<h3 id="screen-17-login">Screen 1.7 — Login</h3>
+<p><strong>Show:</strong> "Valider mon panier" → login page → enter Jean-Christophe's email.</p>
+<p><strong>Say:</strong>
+"Now he logs in. This is the key moment.
+Until now he was an anonymous visitor. Now Salesforce links this browser to Jean-Christophe Tran, the contact we
+already have in the CRM. Everything he did anonymously is now attached to his customer profile.
+We call this identity resolution. It's what lets us use the same profile on the website, in email and in the CRM."</p>
+<p><strong>UC:</strong> UC2 (identity), UC3.</p>
+<h3 id="screen-18-home-page-now-identified">Screen 1.8 — Home page, now identified</h3>
+<p><strong>Show:</strong> go to the home page. Point at the promo strip (coffee machine offer from 750 € HT) and "Ces produits
+pourraient vous intéresser".</p>
+<p><strong>Say:</strong>
+"Back on the home page, logged in. Two things changed.
+The promotion: known customers who have already ordered get a different offer, a coffee machine from 750 €.
+And the recommendations: Jean-Christophe is a frequent buyer, ten orders or more. For frequent buyers we use an
+AI recommender that learns from each customer's own history. He gets boxes, because that's what he buys.
+A new visitor in the same zone would get recommendations based on his interests instead. Same zone, different
+logic, depending on who you are. I'll show you how that rule is built in a minute."</p>
+<p><strong>UC:</strong> UC3.</p>
+<h3 id="screen-19-fren-switch">Screen 1.9 — FR/EN switch</h3>
+<p><strong>Show:</strong> click "EN" on the home page.</p>
+<p><strong>Say:</strong>
+"RAJA runs 27 sites in 19 countries. One click: same recommendations, now in English, with UK prices in pounds.
+The product names and prices come from a translation table in Data 360. One catalog, many languages."</p>
+<p><strong>UC:</strong> UC3 (multi-country).</p>
+<h3 id="screen-110-he-leaves-his-cart">Screen 1.10 — He leaves his cart</h3>
+<p><strong>Show:</strong> close the tab with the cart still full.</p>
+<p><strong>Say:</strong>
+"And then, like many buyers, he leaves without ordering. We'll see what happens next in act 3."</p>
+<hr />
+<h2 id="act-2-behind-the-scenes-how-a-business-user-builds-it-25-min">Act 2 — Behind the scenes: how a business user builds it (25 min)</h2>
+<blockquote>
+<p>Switch to Salesforce, Personalization app.</p>
+</blockquote>
+<h3 id="screen-21-the-three-building-blocks-slide-or-whiteboard">Screen 2.1 — The three building blocks (slide or whiteboard)</h3>
+<p><strong>Show:</strong> nothing on screen yet, or a simple drawing: a salesperson, a shelf, an instruction card.</p>
+<p><strong>Say:</strong>
+"Everything you saw is built with three building blocks. If you remember three words from today, it's these.
+Think of a shop.
+One: the <strong>recommender</strong>. That's the salesperson who picks products. Each salesperson has a method: one picks
+'what people buy together', another picks 'similar products', another one is an AI that learns from each
+customer. A recommender answers one question: which products?
+Two: the <strong>personalization point</strong>. That's a spot in the shop window: the hero banner, the 'customers also bought'
+zone, the cart zone. A personalization point answers: where?
+Three: the <strong>personalization decision</strong>. That's the instruction card stuck on the shelf: 'for frequent buyers, use
+the AI salesperson; for everyone else, use the interests salesperson'. A decision answers: for whom, and with what?
+Recommender, point, decision. Which products, where, for whom."</p>
+<p><strong>UC:</strong> UC1.</p>
+<h3 id="screen-22-recommenders">Screen 2.2 — Recommenders</h3>
+<p><strong>Show:</strong> Recommenders list (8 recommenders). Open <code>RAJA Co-Buy</code>, then <code>RAJA ML add to cart V2</code>.</p>
+<p><strong>Say:</strong>
+"Here are our salespeople. Two kinds.
+Rule-based ones, like Co-Buy: we tell it 'rank products by how often they're bought together with the product on
+screen'. It's transparent: you can explain every result.
+And AI ones, like 'ML add to cart': we give it a goal, here 'maximise add-to-cart', and a deep-learning model
+finds the products most likely to reach that goal for this person. It can also recommend new products from their
+description, before anyone has bought them.
+Each recommender can have a backup: if it can't find enough products, it falls back to top sellers. The zone is
+never empty."</p>
+<p><strong>UC:</strong> UC1, UC3.</p>
+<h3 id="screen-23-simulator">Screen 2.3 — Simulator</h3>
+<p><strong>Show:</strong> Recommenders tab → "RAJA ML add to cart V2" → <strong>Simulate</strong> (top right) → <strong>Sample Recipient</strong> = Jean-Christophe's
+Unified Individual ID → leave <strong>Anchor Item ID</strong> empty → <strong>Simulate</strong> → read the <strong>Results</strong> section.
+Optional second run: "RAJA Co-Buy" with Anchor Item ID <code>PR-026-01</code> to show a product-anchored list.</p>
+<p><strong>Say:</strong>
+"Before putting anything live, a marketer can test a recommender on a real customer. Here, Jean-Christophe: we see
+exactly the products he'll get, before any customer sees them.
+That's how you check a recommender makes sense, without touching the website."</p>
+<p><strong>UC:</strong> UC1.</p>
+<h3 id="screen-24-personalization-point-and-decisions">Screen 2.4 — Personalization point and decisions</h3>
+<p><strong>Show:</strong> Personalization Points tab → "Home Recommended For You V3" → its two decisions "ML Frequent Buyers V3"
+(priority 1) and "For You All Visitors V3" (priority 2). Open the targeting rule of the first one.</p>
+<p><strong>Say:</strong>
+"This is the spot in the window: the home page zone you saw.
+It has two instruction cards, in priority order.
+Card one: 'if the customer has ten orders or more, use the AI recommender'. That's Jean-Christophe.
+Card two: 'everyone else: recommend best sellers in the categories they're interested in'.
+Salesforce reads the cards from the top and uses the first one that matches. Only one per zone, never a mix.
+The rules can use anything in the customer profile: number of orders, segments, interests, the page, dates."</p>
+<p><strong>UC:</strong> UC1, UC3.</p>
+<h3 id="screen-25-same-logic-for-banners">Screen 2.5 — Same logic for banners</h3>
+<p><strong>Show:</strong> Personalization Points tab → "Home Hero Banner" → decision "Boxes Affinity Hero", then "Home Promo Strip" →
+decision "Coffee Machine Offer Known Customers".</p>
+<p><strong>Say:</strong>
+"Same three blocks for banners, except the 'salesperson' is replaced by content: a headline, an image, a button.
+The hero card says 'interest in boxes above zero'. The promo card says 'at least one order'.
+That's exactly what Jean-Christophe saw earlier."</p>
+<p><strong>UC:</strong> UC3.</p>
+<h3 id="screen-26-web-personalization-manager-build-live-preview-only">Screen 2.6 — Web Personalization Manager (build live, preview only)</h3>
+<p><strong>Show:</strong> in the normal window, open <code>localhost:8765/index.html?sf_personalization_wpm</code> and log in to Salesforce.
+Then, with the labels from the Salesforce doc:
+1. <strong>Personalization Experiences</strong> menu → <strong>New</strong> → <strong>Embedded Content</strong> → <strong>Next</strong>.
+2. Select the personalization point "Home Recommended For You V4" → <strong>Next</strong>.
+3. Select the experience template "Product Recommendations Template" → <strong>Next</strong>.
+4. <strong>Location</strong> tab → <strong>Current Page Type</strong>. <strong>Display Method</strong> → the one used in rehearsal (e.g. <strong>Replace an
+   Element</strong>, then click the home recommendations block).
+5. <strong>Content</strong> → <strong>Preview Settings</strong> tab.
+6. <strong>Personalization Decisions and Cohorts</strong> menu → "ML Frequent Buyer V4" → <strong>Preview</strong>; then "For You All Visitor
+   V4" → <strong>Preview</strong>. Same zone, two logics.</p>
+<p>Optional: show the Experience Templates tab (4 templates: "Hero Banner Template", "Home Promo Strip Template",
+"Product Recommendations Template", "Exit Intent Overlay").</p>
+<p><strong>Say:</strong>
+"On our demo website, the zones are wired by a developer. Now let me show you the low-code way, the way a RAJA
+marketer would do it.
+I open our website with the Web Personalization Manager editor. I click on the zone I want to change. I pick a template, I pick the
+personalization point. And I preview it, as if I were Jean-Christophe, or as if I were a new visitor.
+No developer, no release. When I'm happy, I switch it to Enabled and it's live. I won't do it today, so we don't
+change the site during the demo."</p>
+<p><strong>UC:</strong> UC1, UC3.</p>
+<h3 id="screen-27-data-behind-it-short">Screen 2.7 — Data behind it (short)</h3>
+<p><strong>Show:</strong> Jean-Christophe Tran Contact → tab <strong>360 View</strong> (Data Graph Visualizer). Optional: Data Graphs tab →
+"RAJA_Profile_RT".</p>
+<p><strong>Say:</strong>
+"Where does all this data come from? Data 360. Website behaviour, orders, CRM contact, product catalog, all in one
+place. Salesforce Personalization reads it directly: there's no copy to another tool and no nightly sync between
+the two.
+Setting it up is the project part: connect the sources, describe the customer and the product. After that, the
+marketer works only with the three blocks you've just seen."</p>
+<p><strong>UC:</strong> UC1, UC2.</p>
+<hr />
+<h2 id="act-3-same-intelligence-every-channel-10-min">Act 3 — Same intelligence, every channel (10 min)</h2>
+<h3 id="screen-31-abandoned-cart-flow">Screen 3.1 — Abandoned-cart flow</h3>
+<p><strong>Show:</strong> Marketing Cloud Advanced flow on the Marketing Trigger "Abandoned Shopping Cart": "Abandoned cart email
+1" → wait 3 days → decision "Cart converted?" → Yes: "Thank You" email / No: "Best Follow-Up per Customer" (second
+reminder or no reminder).</p>
+<p><strong>Say:</strong>
+"Remember Jean-Christophe left his cart. Marketing Cloud picks that up and starts this flow: a reminder email,
+then a wait, then a check: did he order? If yes, a thank-you; if not, a second reminder."</p>
+<p><strong>UC:</strong> UC2.</p>
+<h3 id="screen-32-the-email">Screen 3.2 — The email</h3>
+<p><strong>Show:</strong> open "Abandoned cart email 1" in Marketing Cloud Advanced. Show the recommendation block (Repeater on the
+data source "Personalization Recommendations Data Provider", recommender "RAJA ML add to cart V2"). Then the email
+preview with Jean-Christophe as the preview recipient: subject "Jean-Christophe votre panier vous attend", CTA
+"Reprendre mon panier", grid "Ces produits pourraient vous intéresser". The email is not sent.</p>
+<p><strong>Say:</strong>
+"This is the email Jean-Christophe gets. Let me preview it as him.
+His first name in the subject, a button back to his cart, and at the bottom: 'Ces produits pourraient vous
+intéresser'.
+That block isn't a copy of a list. It calls the same AI recommender we used on the website. Look: same products as
+on his home page.
+One recommender, one logic, on the site and in the email."</p>
+<p><strong>UC:</strong> UC2.</p>
+<h3 id="screen-33-jean-christophe-in-the-crm">Screen 3.3 — Jean-Christophe in the CRM</h3>
+<p><strong>Show:</strong> Jean-Christophe Tran Contact, tab <strong>360 View</strong>: Data Graph Visualizer, Data Cloud Profile Insights (RAJA
+Avg Basket), and the recommendations block (4 products).</p>
+<p><strong>Say:</strong>
+"Now the sales rep or the customer service agent opens Jean-Christophe in the CRM.
+They see his web activity, his orders, his average basket. And the same personalized recommendations, coming from
+the same engine. If he calls, the agent can suggest the right products.
+So: website, email, CRM. One profile, one set of recommendations."</p>
+<p><strong>UC:</strong> UC2.</p>
+<hr />
+<h2 id="act-4-testing-and-measuring-10-min">Act 4 — Testing and measuring (10 min)</h2>
+<h3 id="screen-41-the-experiment">Screen 4.1 — The experiment</h3>
+<p><strong>Show:</strong> Experiments tab → "PDP Also Bought Co-Buy vs ML" (on personalization point "PDP Customers Also Bought"):
+two variations 50/50, "Business as Usual" (control, "Defer response to the Personalization Decisions") and "ML add
+to cart"; primary metric RAJA Add To Cart, secondary Purchase and Product View.</p>
+<p><strong>Say:</strong>
+"How do you know the AI does better than a simple rule? You test it.
+On the product page zone 'customers also bought', half the visitors get the current logic, Co-Buy. The other half
+get the AI recommender. We measure add-to-cart first, purchases and product views second.
+The current logic is called 'Business as Usual'. Technically, that group 'defers': it gets no test recommender and
+simply sees what the zone shows anyway.
+Results are read the Bayesian way: Salesforce tells you the probability that the AI version beats the current one.
+You need at least 1,000 people per group before it declares a winner, so on our demo site there's no result yet."</p>
+<p><strong>UC:</strong> UC5.</p>
+<h3 id="screen-42-whats-not-there-yet-honest-moment">Screen 4.2 — What's not there yet (honest moment)</h3>
+<p><strong>Show:</strong> stay on the experiment.</p>
+<p><strong>Say:</strong>
+"Use case 5 asks for incrementality: what do recommendations add compared to no recommendations at all, in euros.
+Two honest limits today.
+One: every test group must show something. You can compare 'new logic versus current logic', but not
+'recommendations versus nothing'.
+Two: results are a percentage lift on counts, add-to-cart, purchases, views. Not extra revenue in euros. For that
+you'd export the data to your BI.
+Both are on our list for the product team, and our product management team is here if you want to go deeper."</p>
+<p><strong>UC:</strong> UC5.</p>
+<hr />
+<h2 id="act-5-wrap-up-10-min">Act 5 — Wrap-up (10 min)</h2>
+<h3 id="screen-51-constat-slide-1-donut">Screen 5.1 — Constat slide 1 (donut)</h3>
+<p><strong>Show:</strong> slide "RAJA requirements: what SP and MCP each cover".</p>
+<p><strong>Say:</strong>
+"We went through your 100 requirements one by one, against the official documentation.
+Most of them, 65, are covered at the same level by both Salesforce products, Personalization and the Marketing
+Cloud Personalization you know. A few are better in one or the other. And 12 aren't covered by either today, like
+predicted replenishment or incremental revenue: we'd rather tell you now."</p>
+<h3 id="screen-52-constat-slide-2-why-sp">Screen 5.2 — Constat slide 2 (why SP)</h3>
+<p><strong>Show:</strong> slide "Why SP: what a feature list doesn't show".</p>
+<p><strong>Say:</strong>
+"So why Salesforce Personalization? Three reasons you saw today.
+One: it decides on Data 360 directly, with no sync in between.
+Two: deep-learning recommendations, including new products from day one.
+Three: one recommender for the website, the CRM and email. You saw the same products in all three."</p>
+<h3 id="screen-53-recap-of-the-use-cases">Screen 5.3 — Recap of the use cases</h3>
+<p><strong>Say:</strong>
+"To sum up your five use cases:
+set up, with three building blocks and a low-code editor;
+cross-channel, with one profile and one recommender everywhere;
+personalization, from an anonymous visitor's first click to a known buyer;
+variants, handled with a family rule, and the gaps we told you about;
+and testing, with A/B tests and the limits we were honest about.
+Questions?"</p></main></body></html>
