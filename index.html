@@ -10,7 +10,8 @@ table{border-collapse:collapse;width:100%;font-size:.92em}th,td{border:1px solid
 th{background:#F4F6F9;text-align:left}
 strong{color:#032D60}
 </style></head><body><main><h1 id="raja-soutenance-demo-script-talk-track-13102026">RAJA soutenance — Demo script &amp; talk track (13/10/2026)</h1>
-<p>Duration: 1h30 demo, 5 acts, all 5 RAJA use cases covered (no imposed order).</p>
+<p>Duration: 1h30 demo, 4 acts after the intro, all 5 RAJA use cases covered (no imposed order). The wrap-up is
+carried by the sales team.</p>
 <table>
 <thead>
 <tr>
@@ -44,11 +45,6 @@ strong{color:#032D60}
 <td>4. Testing and measuring</td>
 <td>15 min</td>
 <td>UC5</td>
-</tr>
-<tr>
-<td>5. Wrap-up</td>
-<td>5 min</td>
-<td>all</td>
 </tr>
 <tr>
 <td>Buffer</td>
@@ -170,128 +166,146 @@ does that, and I'll show you how later."</p>
 <hr />
 <h2 id="act-2-behind-the-scenes-how-a-business-user-builds-it-30-min">Act 2 — Behind the scenes: how a business user builds it (30 min)</h2>
 <blockquote>
-<p>Switch to Salesforce, Personalization app.</p>
+<p>Switch to Salesforce. Never click Save in this act: every build is shown, not saved.</p>
 </blockquote>
+<h3 id="screen-20-one-platform">Screen 2.0 — One platform</h3>
+<p><strong>Show:</strong> App Launcher → type "Sales" (don't open it), then "Personalization" → open the Personalization app.</p>
+<p><strong>Say:</strong>
+"Before I show you how Jean-Christophe's experience was built, let me briefly present the platform. Salesforce
+Personalization is built on the same technology as the core product, the CRM you're using, and it uses Data 360 as
+its data layer. It's one platform.
+Sales, Personalization: the foundation is the same. The apps are built for different business users, but the data
+is the same and flows into every app.
+So let me introduce you to Salesforce Personalization, the personalization engine of Salesforce."</p>
+<p><strong>UC:</strong> UC1, UC2.</p>
 <h3 id="screen-21-the-three-building-blocks-slide-or-whiteboard">Screen 2.1 — The three building blocks (slide or whiteboard)</h3>
 <p><strong>Show:</strong> nothing on screen yet, or a simple drawing: a salesperson, a shelf, an instruction card.</p>
 <p><strong>Say:</strong>
-"Everything you saw is built with three building blocks. If you remember three words from today, it's these.
-Think of a shop.
-One: the <strong>recommender</strong>. That's the salesperson who picks products. Each salesperson has a method: one picks
-'what people buy together', another picks 'similar products', another one is an AI that learns from each
-customer. A recommender answers one question: which products?
-Two: the <strong>personalization point</strong>. That's a spot in the shop window: the hero banner, the 'customers also bought'
-zone, the cart zone. A personalization point answers: where?
-Three: the <strong>personalization decision</strong>. That's the instruction card stuck on the shelf: 'for frequent buyers, use
-the AI salesperson; for everyone else, use the interests salesperson'. A decision answers: for whom, and with what?
-Recommender, point, decision. Which products, where, for whom.
-Let me spend one more minute on each block.
-A recommender comes in two kinds. <strong>Rule-based</strong>: you choose the ranking, from a calculation in Data 360: top
-sellers, most viewed, bought together. Transparent, works from day one, and you can explain every result. <strong>AI, or
-objective-based</strong>: you choose a goal, add to cart, clicks or revenue, and a deep-learning model ranks products for
-each person. It retrains every day, and it can recommend a brand-new product from its description.
-A personalization point is a zone on the site, plus its format: which product fields come back, and how many
-products.
-A decision is a rule on that zone: who it's for, with which recommender or content, and in which priority. One
-visitor, one decision per zone."</p>
+"So how does this personalization engine work? With three blocks: the recommender, the personalization point and
+the personalization decision. Think of a shop.
+The recommender is the salesperson: he picks the products. What people buy together, similar items, or it's an AI
+that does it. It answers the question: which products?
+Then the personalization point: it's where I want to display the products. On the home page, the cart page, the
+product page. It answers the question: where?
+Finally, the personalization decision answers the question: to whom? Everyone? Frequent buyers?
+Now let's answer each of these questions. First, which products: the recommender."</p>
 <p><strong>UC:</strong> UC1.</p>
-<h3 id="screen-22-recommenders">Screen 2.2 — Recommenders</h3>
-<p><strong>Show:</strong> Recommenders list (8 recommenders). Open <code>RAJA Co-Buy</code>, then <code>RAJA ML add to cart V2</code>.</p>
+<h3 id="screen-22-the-ai-recommender">Screen 2.2 — The AI recommender</h3>
+<p><strong>Show:</strong> Recommenders tab → "RAJA ML add to cart V2" → <strong>Edit</strong>.
+1. Recommender properties: profile data graph "RAJA Profile RT", item data graph, fallback → <strong>Next</strong>.
+2. Objective-based vs rule-based; objective = the custom add-to-cart objective → <strong>Next</strong>.
+3. Filters, <strong>Include</strong> tab: add a condition to show it, <strong>Direct Attributes</strong> → <strong>Is Sellable</strong> → Static → Is Equal
+   To → Yes. <strong>Delete the condition right after.</strong> <strong>Exclude</strong> tab: the existing filter Product Id / Decision Context /
+   Match Any / Product Id.
+4. Simulation: <strong>Sample Recipient</strong> = Jean-Christophe's Unified Individual ID, no <strong>Anchor Item ID</strong> → <strong>Simulate</strong>.
+   Then <strong>Anchor Item ID</strong> = <code>PR-001-01</code> → <strong>Simulate</strong>: PR-001-01 is no longer in the results.
+5. Leave without saving. This is the live recommender: never Save &amp; Exit.</p>
 <p><strong>Say:</strong>
-"Here are our salespeople. Two kinds.
-Rule-based ones, like Co-Buy: we tell it 'rank products by how often they're bought together with the product on
-screen'. It's transparent: you can explain every result.
-And AI ones, like 'ML add to cart': we give it a goal, here 'maximise add-to-cart', and a deep-learning model
-finds the products most likely to reach that goal for this person. It can also recommend new products from their
-description, before anyone has bought them.
-On top of the AI, the marketer keeps control with filters. Inclusion: 'only recommend products that…'. Exclusion:
-'never recommend products that…'. A filter can compare a product with a fixed value, with the product on screen, or
-with anything we know about the customer in Data 360.
-Inclusion examples: only products in stock. Only products of the same colour or range as the one on screen. Only
-products under a price, for a budget zone. Only products of a seasonal range between two dates.
-Exclusion examples: here, the product the customer is looking at right now, otherwise the AI could suggest the very
-box he already has on screen. Products he has already bought, though for RAJA consumables you may want the
-opposite. Expired offers. Clearance items in a full-price zone.
-And customer data works on both levels. A segment like 'frequent buyers' can choose <em>who</em> gets this recommender, in
-the decision rule, as you'll see in a minute. It can also choose <em>which products</em>: for example, products reserved
-for members of a segment.
-Each recommender can have a backup: if it can't find enough products, it falls back to top sellers. The zone is
-never empty."</p>
+"Recommender. First question: which products?
+Here I select the customer data the engine learns from, the real-time profile, and my catalogue. I can also select a
+fallback: if for a given person the engine only finds two products, the fallback completes the rest of the zone.
+Now it gets interesting: you have objective-based, machine learning, and rule-based. Let's focus on
+objective-based: it uses machine learning to analyse behaviour and show an individualised recommendation. I give
+the machine learning a goal, here maximise add to cart. You can maximise revenue, clicks, or a goal you define from
+your own signals, like add to cart here. You decide what's best for your marketing strategy.
+On the filter screen, I can include: for instance, only recommend products that are sellable. And I can exclude:
+here I'm excluding the product I'm looking at right now. There's no sense in recommending something I'm already
+seeing.
+And finally, the simulation. I pick Jean-Christophe: here are his products. Now I add the product he's looking at,
+PR-001-01: it's gone from the list, the exclusion works. What matters is that I simulate the recommendation before it
+goes live on the website. If it's all good, I save. If not, I go back and change the settings."</p>
 <p><strong>UC:</strong> UC1, UC3.</p>
-<h3 id="screen-23-simulator">Screen 2.3 — Simulator</h3>
-<p><strong>Show:</strong> Recommenders tab → "RAJA ML add to cart V2" → <strong>Simulate</strong> (top right) → <strong>Sample Recipient</strong> = Jean-Christophe's
-Unified Individual ID → leave <strong>Anchor Item ID</strong> empty → <strong>Simulate</strong> → read the <strong>Results</strong> section.
-Optional second run: "RAJA Co-Buy" with Anchor Item ID <code>PR-026-01</code> to show a product-anchored list.</p>
+<h3 id="screen-22b-the-rule-based-recommender">Screen 2.2b — The rule-based recommender</h3>
+<p><strong>Show:</strong> Recommenders tab → "RAJA For You V2". Go through filters and simulation quickly.</p>
 <p><strong>Say:</strong>
-"Before putting anything live, a marketer can test a recommender on a real customer. Here, Jean-Christophe: we see
-exactly the products he'll get, before any customer sees them.
-That's how you check a recommender makes sense, without touching the website."</p>
+"Now let's have a look at the rule-based recommender. Here it is you who decide, based on the data model or a
+calculated output, how you want to sort the recommendations. Here, for instance, the output of the best sellers, but
+only in the categories the visitor is most interested in: the affinity score we saw on the anonymous profile.
+Same filters and simulator."</p>
+<p><strong>UC:</strong> UC1, UC3.</p>
+<h3 id="screen-23-personalization-point">Screen 2.3 — Personalization point</h3>
+<p><strong>Show:</strong> Personalization Points tab → <strong>New</strong>: profile data graph, name, personalization type, content schema. Don't
+save. Then open "Home Recommended For You V4".</p>
+<p><strong>Say:</strong>
+"Now that the salesperson picks the products with the recommender, let's see where we display them, with the
+personalization point.
+Here I select the real-time profile, the customer data the engine reads to decide. I give it a name. Then the
+personalization type: Recommendation, to recommend products picked by a recommender, or Dynamic Content, content I
+write myself, a title, an image, a call to action, like the hero banner or the promo strip you saw earlier.
+And the content schema: which fields the website gets back, image, name, price."</p>
 <p><strong>UC:</strong> UC1.</p>
-<h3 id="screen-24-personalization-point-and-decisions">Screen 2.4 — Personalization point and decisions</h3>
-<p><strong>Show:</strong> Personalization Points tab → "Home Recommended For You V3" → its two decisions "ML Frequent Buyers V3"
-(priority 1) and "For You All Visitors V3" (priority 2). Open the targeting rule of the first one.</p>
+<h3 id="screen-24-personalization-decision">Screen 2.4 — Personalization decision</h3>
+<p><strong>Show:</strong> "Home Recommended For You V4" → decision "ML Frequent Buyer V4" (priority 1) → <strong>Edit</strong> → decision config,
+then targeting rule (RAJA Avg Basket &gt; order_count, Is Greater Than Or Equal To 10). The second decision is "For You
+All Visitor V4" (priority 2, "RAJA For You V2").</p>
 <p><strong>Say:</strong>
-"This is the spot in the window: the home page zone you saw.
-It has two instruction cards, in priority order.
-Card one: 'if the customer has ten orders or more, use the AI recommender'. That's Jean-Christophe.
-Card two: 'everyone else: recommend best sellers in the categories they're interested in'.
-Salesforce reads the cards from the top and uses the first one that matches. Only one per zone, never a mix.
-The rules can use anything in the customer profile: number of orders, segments, interests, the page, dates."</p>
+"We saw which products and where to display them. Now let's see to whom, with the personalization decision.
+Decision config: here is the title of the zone you saw on the home page, and here I plug in the recommender, the
+machine learning one we just saw.
+Then the targeting rule: here I show this zone only to visitors with 10 orders or more, a calculated insight in Data
+360. I can add more conditions to the rule: a segment such as top spenders, or any data available.
+And everyone else? They fall to the second decision, priority 2, with the rule-based best sellers we saw. One
+decision per visitor: the first one that matches wins.
+That's how real-time personalized content is configured on the web."</p>
 <p><strong>UC:</strong> UC1, UC3.</p>
-<h3 id="screen-25-same-logic-for-banners">Screen 2.5 — Same logic for banners</h3>
-<p><strong>Show:</strong> Personalization Points tab → "Home Hero Banner" → decision "Boxes Affinity Hero", then "Home Promo Strip" →
-decision "Coffee Machine Offer Known Customers".</p>
+<h3 id="screen-25-experience-templates-only-if-asked">Screen 2.5 — Experience templates (only if asked)</h3>
+<p><strong>Show:</strong> Experience Templates tab → "Product Recommendations Template" → <strong>Edit</strong>. Don't save.</p>
 <p><strong>Say:</strong>
-"Same three blocks for banners, except the 'salesperson' is replaced by content: a headline, an image, a button.
-The hero card says 'interest in boxes above zero'. The promo card says 'at least one order'.
-That's exactly what Jean-Christophe saw earlier."</p>
-<p><strong>UC:</strong> UC3.</p>
-<h3 id="screen-25b-abandoned-cart-flow">Screen 2.5b — Abandoned-cart flow</h3>
-<p><strong>Show:</strong> Marketing Cloud Advanced flow on the Marketing Trigger "Abandoned Shopping Cart": "Abandoned cart email
-1" → wait 3 days → decision "Cart converted?" → Yes: "Thank You" email / No: "Best Follow-Up per Customer" (second
-reminder or no reminder).</p>
-<p><strong>Say:</strong>
-"Marketing Cloud picks up the abandoned cart and starts this flow: a reminder email, then a wait, then a check: did
-he order? If yes, a thank-you; if not, a second reminder."</p>
-<p><strong>UC:</strong> UC2.</p>
-<h3 id="screen-25c-the-email-built-in-marketing-cloud">Screen 2.5c — The email, built in Marketing Cloud</h3>
-<p><strong>Show:</strong> open "Abandoned cart email 1". Show the recommendation block (Repeater on the data source "Personalization
-Recommendations Data Provider", recommender "RAJA ML add to cart V2").</p>
-<p><strong>Say:</strong>
-"Here is the email. The products block at the bottom isn't a copy of a list. It calls the same AI recommender we
-use on the website. One recommender, one logic, on the site and in the email."</p>
-<p><strong>UC:</strong> UC2.</p>
-<h3 id="screen-26-web-personalization-manager-build-live-preview-only">Screen 2.6 — Web Personalization Manager (build live, preview only)</h3>
-<p><strong>Show:</strong> in the normal window, open <code>localhost:8765/index.html?sf_personalization_wpm</code> and log in to Salesforce.
-Then, with the labels from the Salesforce doc:
-1. <strong>Personalization Experiences</strong> menu → <strong>New</strong> → <strong>Embedded Content</strong> → <strong>Next</strong>.
-2. Select the personalization point "Home Recommended For You V4" → <strong>Next</strong>.
-3. Select the experience template "Product Recommendations Template" → <strong>Next</strong>.
-4. <strong>Location</strong> tab → <strong>Current Page Type</strong>. <strong>Display Method</strong> → the one used in rehearsal (e.g. <strong>Replace an
-   Element</strong>, then click the home recommendations block).
-   Before validating, open the <strong>Display Method</strong> list and read the options: <strong>Replace a Content Zone</strong>, <strong>Replace
-   an Element</strong>, <strong>Add Before an Element</strong>, <strong>Add After an Element</strong>, <strong>Add an Overlay</strong> (<strong>When to Display</strong>:
-   <strong>Immediately</strong>, <strong>Exit Intent</strong>, <strong>Element Click</strong>, <strong>Scroll Percentage</strong>). Then <strong>Location</strong>: <strong>Current Page
-   Type</strong> vs <strong>Page URL</strong> (wildcards).
-5. <strong>Content</strong> → <strong>Preview Settings</strong> tab.
-6. <strong>Personalization Decisions and Cohorts</strong> menu → "ML Frequent Buyer V4" → <strong>Preview</strong>; then "For You All Visitor
-   V4" → <strong>Preview</strong>. Same zone, two logics.</p>
-<p>Optional: show the Experience Templates tab (4 templates: "Hero Banner Template", "Home Promo Strip Template",
-"Product Recommendations Template", "Exit Intent Overlay").</p>
-<p><strong>Say:</strong>
-"On our demo website, the zones are wired by a developer. Now let me show you the low-code way, the way a RAJA
-marketer would do it.
-I open our website with the Web Personalization Manager editor. I click on the zone I want to change. I pick a template, I pick the
-personalization point. And I preview it, as if I were Jean-Christophe, or as if I were a new visitor.
-Three choices, all with the mouse. Where on the site: this page type, so every product page at once, or a list of
-URLs. Where on the page: replace a block, add before or after it, or an overlay, for example when the visitor is
-about to leave, or after he scrolls halfway. And how it looks: a template that your design team builds once and
-marketers reuse.
-Then I track the clicks, and I preview as a given decision, as a test group, or as a real customer.
-No developer, no release. Nothing goes live until I switch the State to Enabled. I won't do it today, so we don't
-change the site during the demo."</p>
+"Great question: how do we define the look and feel, and how is the content zone actually rendered? Through
+experience templates.
+I give it a name, then I select the website it's built for. I can start from a Salesforce global template or from
+scratch. Then I select the content schema, 'Recommendations - Product'. Remember, we saw it in the personalization
+point, and below are the fields the website gets back. Each field becomes a variable, and I insert the ones I want:
+the price or not, for instance.
+Then in the HTML I set the look and feel: font, colour, size. The product image comes from the variable, so it
+follows the recommendation.
+Once activated, this is the template I pick in a campaign or in the Web Personalization Manager, as you'll see."</p>
+<p>If a technical profile asks: views and clicks are tracked by default on the template (option "Turn off
+auto-engagement tracking"), and that's what feeds the test results in Act 4.</p>
 <p><strong>UC:</strong> UC1, UC3.</p>
-<h3 id="screen-27-data-behind-it-short">Screen 2.7 — Data behind it (short)</h3>
+<h3 id="screen-26-personalization-campaigns-guided-setup">Screen 2.6 — Personalization Campaigns (guided setup)</h3>
+<p><strong>Show:</strong> Personalization Campaigns tab → <strong>New Campaign</strong> → <strong>Go to Guided Setup</strong>: Data → Strategy (<strong>Dynamic
+Content</strong>; <strong>Recommendations &amp; Offers</strong> is greyed out) → Channel (<strong>Website</strong>) → Template (content schema "Banner
+Content", <strong>Hero Banner Template</strong>) → Decision (fields, merge fields, targeting rules) → Review.
+<strong>Decision State is Live by default: leave with Exit to Campaigns, never Save.</strong></p>
+<p><strong>Say:</strong>
+"So that's the full build: recommender, personalization point, decision, three screens and some back and forth.
+The good news: you don't have to do it that way. Personalization Campaigns gives you one guided setup, one screen
+after another, from data to decision, with no back and forth between modules.
+First step, I select the data for my real-time audience. Then: dynamic content or product recommendation, that's
+the which. Recommendations &amp; Offers is greyed out for now; it's coming soon, and our product management team can tell you more.
+I choose the channel, the website here, that's the where. Mobile apps are also supported once a mobile app is
+connected.
+I choose the template, for example the hero banner. Then I decide the fields for the banner and the targeting rules,
+and I can add merge fields, like the customer's first name, straight from the profile. I can add several decisions:
+that's the to whom.
+I review the whole setup, and it's done."</p>
+<p><strong>UC:</strong> UC1, UC3.</p>
+<h3 id="screen-27-web-personalization-manager-preview-only">Screen 2.7 — Web Personalization Manager (preview only)</h3>
+<p><strong>Show:</strong> in the normal window, back to the RAJA website: open <code>localhost:8765/index.html?sf_personalization_wpm</code> and
+log in to Salesforce.
+1. Open the saved experience "Home Recommended For You V4" → <strong>Select Element</strong> on the home recommendations block →
+   <strong>Display Method</strong> list → <strong>Replace an Element</strong>. <strong>Page Option</strong>: <strong>Current Page Type (Home page)</strong>.
+2. Decisions menu → "ML Frequent Buyer V4" → <strong>Preview</strong>; then "For You All Visitor V4" → <strong>Preview</strong>.
+3. New experience: <strong>New</strong> → <strong>Embedded Content</strong> → personalization point "Exit Intent Overlay" → template "Exit
+   Intent Overlay" → <strong>Display Method</strong> = <strong>Add an Overlay</strong> → <strong>When to Display</strong>: read the options, pick <strong>Exit
+   Intent</strong> → <strong>Preview</strong> (decision "Welcome offer all visitors").
+4. <strong>Never set the State toggle to Enabled.</strong> Leave with Preview or the cross.</p>
+<p><strong>Say:</strong>
+"Now let's see how you display the content zone on the website. Back to the RAJA website: I open the Web
+Personalization Manager, a tool that lets a business user place a content zone the low-code way.
+Here's the saved experience for the home recommendations. I click Select Element: that's how easy it is. Then the
+display method: replace an element. Current page type means every home page, in every language, without listing
+URLs. I could also target a specific URL.
+I'm logged in as Jean-Christophe, so I get the frequent-buyer decision. Switch to the other one, and that's what a
+new visitor sees.
+Now let's create a new one together: an exit intent. New, embedded content, the exit intent personalization point,
+its template, then an overlay. And I decide when it shows: straight away, on a click, after scrolling, or here, exit
+intent, when the visitor's mouse heads for the close button. That's the moment to catch them with the welcome offer.
+Switch the State to Enabled, save, and it's live. No developer, no release, because the tracking script is already
+on the site. I won't do it today, so we don't change the site during the demo."</p>
+<p><strong>UC:</strong> UC1, UC3.</p>
+<h3 id="screen-28-data-behind-it-short">Screen 2.8 — Data behind it (short)</h3>
 <p><strong>Show:</strong> Jean-Christophe Tran Contact → tab <strong>360 View</strong> (Data Graph Visualizer). Optional: Data Graphs tab →
 "RAJA Profile RT".</p>
 <p><strong>Say:</strong>
@@ -301,7 +315,7 @@ the two.
 Setting it up is the project part: connect the sources, describe the customer and the product. After that, the
 marketer works only with the three blocks you've just seen."</p>
 <p><strong>UC:</strong> UC1, UC2.</p>
-<h3 id="screen-27b-one-catalog-many-languages">Screen 2.7b — One catalog, many languages</h3>
+<h3 id="screen-28b-one-catalog-many-languages">Screen 2.8b — One catalog, many languages</h3>
 <p><strong>Show:</strong> Data Graphs tab → "RAJA Item" → point at the object "Product Localization", linked to "Product" (the
 graph's root). For your info, not on screen: the table holds 566 rows, 283 <code>fr_FR</code> in EUR and 283 <code>en_GB</code> in GBP.</p>
 <p><strong>Say:</strong>
@@ -312,6 +326,35 @@ one row in English with the price in pounds. Salesforce Personalization picks th
 The recommender itself is the same: one AI model for every country, and you translate only how the results are
 displayed. For RAJA's 27 sites, that's one recommender to maintain, not 27."</p>
 <p><strong>UC:</strong> UC3 (multi-country), UC1.</p>
+<h3 id="screen-29-the-email-built-in-marketing-cloud">Screen 2.9 — The email, built in Marketing Cloud</h3>
+<p><strong>Show:</strong> open "Abandoned cart email 1". Show the recommendation block (Repeater on the data source "Personalization
+Recommendations Data Provider", recommender "RAJA ML add to cart V2").</p>
+<p><strong>Say:</strong>
+"Here is the email. The products block at the bottom isn't a copy of a list. It calls the same AI recommender we
+use on the website. One recommender, one logic, on the site and in the email."</p>
+<p><strong>UC:</strong> UC2.</p>
+<h3 id="screen-29b-abandoned-cart-flow">Screen 2.9b — Abandoned-cart flow</h3>
+<p><strong>Show:</strong> Marketing Cloud Advanced flow on the Marketing Trigger "Abandoned Shopping Cart": "Abandoned cart email
+1" → wait 3 days → decision "Cart converted?" → Yes: "Thank You" email / No: "Best Follow-Up per Customer" (second
+reminder or no reminder).</p>
+<p><strong>Say:</strong>
+"Marketing Cloud picks up the abandoned cart and starts this flow: a reminder email, then a wait, then a check: did
+he order? If yes, a thank-you; if not, a second reminder."</p>
+<p><strong>UC:</strong> UC2.</p>
+<h3 id="screen-29c-out-of-the-box-triggers">Screen 2.9c — Out-of-the-box triggers</h3>
+<p><strong>Show:</strong> the Marketing Triggers tab, already open: Abandoned Shopping Cart is <strong>On</strong>, the others are <strong>Off</strong>. Open
+<strong>Replenishment</strong> → <strong>Manage Configuration</strong>: Product Categories (Replenishment Cycle in days), Days Before
+Replenishment (7), Send Time, channels. Don't switch it on.</p>
+<p><strong>Say:</strong>
+"And abandoned cart is just one of them. These are the triggers that come out of the box: abandoned browse, back in
+stock, price drop, low inventory, re-engagement, birthday… Abandoned cart is the one switched on here, the one that
+sent Jean-Christophe his email. Each one is a toggle and a configuration, no data model to build, because it runs on
+the same Data 360 events we saw on the website.
+There's even a replenishment trigger. Today it's rule-based: you set a cycle per category, say boxes every 30 days,
+and it messages the customer 7 days before, by email, SMS or WhatsApp. That covers the simple case from day one. The
+predictive version, a cycle learned per customer from their order history, is the Einstein Studio lead we
+mentioned."</p>
+<p><strong>UC:</strong> UC2, UC3.</p>
 <hr />
 <h2 id="act-3-the-same-customer-in-the-crm-5-min">Act 3 — The same customer in the CRM (5 min)</h2>
 <h3 id="screen-31-jean-christophe-in-the-crm">Screen 3.1 — Jean-Christophe in the CRM</h3>
@@ -325,58 +368,17 @@ So: website, email, CRM. One profile, one set of recommendations."</p>
 <p><strong>UC:</strong> UC2.</p>
 <hr />
 <h2 id="act-4-testing-and-measuring-15-min">Act 4 — Testing and measuring (15 min)</h2>
-<h3 id="screen-41-the-experiment">Screen 4.1 — The experiment</h3>
+<h3 id="screen-41-the-experiment-then-product-management">Screen 4.1 — The experiment, then product management</h3>
 <p><strong>Show:</strong> Experiments tab → "PDP Also Bought Co-Buy vs ML" (on personalization point "PDP Customers Also Bought"):
-two variations 50/50, "Business as Usual" (control, "Defer response to the Personalization Decisions") and "ML add
-to cart"; primary metric RAJA Add To Cart, secondary Purchase and Product View.</p>
+"Business as Usual" (control) and "ML add to cart", 50/50; primary metric RAJA Add To Cart, secondary Purchase and
+Product View. Then the two example dashboard captures (ABNCommerceRecsSplit). Then hand over to product management.</p>
 <p><strong>Say:</strong>
-"How do you know the AI does better than a simple rule? You test it, directly on the zone.
-Four settings. One, the <strong>primary metric</strong>: the one that decides the winner, here add to cart. <strong>Secondary
-metrics</strong>, purchases and product views, are watched but don't decide.
-Two, <strong>who enters the test</strong>: everyone, or only a segment, a country, a page type, with the same rules as decisions.
-Three, <strong>the groups</strong>. The first group is always the reference, here 'Business as Usual', the current Co-Buy logic.
-Then one or several variations: that's A/B/n. Here it's A/B, 50/50. We could add a third group, top sellers, and
-split 34/33/33, as long as it adds up to 100%. A visitor stays in the same group for the whole test, and the test
-takes priority over the zone's normal decisions.
-Four, <strong>when to stop</strong>: here at least 14 days and at most 90, at least 1,000 people per group, and a 95% confidence
-threshold. Once started, the test can't be edited, so the comparison stays fair.
-Results come in daily, the Bayesian way: for each group, the lift in %, a credible interval, the chance to beat the
-reference, and the chance to beat all groups. On our demo site there's no result yet, the traffic is too small."</p>
-<p><strong>UC:</strong> UC5.</p>
-<h3 id="screen-42-whats-not-there-yet-honest-moment">Screen 4.2 — What's not there yet (honest moment)</h3>
-<p><strong>Show:</strong> stay on the experiment.</p>
-<p><strong>Say:</strong>
-"Use case 5 asks for incrementality: what do recommendations add compared to no recommendations at all, in euros.
-Two honest limits today.
-One: every test group must show something. You can compare 'new logic versus current logic', but not
-'recommendations versus nothing'.
-Two: results are a percentage lift on counts, add-to-cart, purchases, views. Not extra revenue in euros. For that
-you'd export the data to your BI.
-Both are on our list for the product team, and our product management team is here if you want to go deeper."</p>
-<p><strong>UC:</strong> UC5.</p>
-<hr />
-<h2 id="act-5-wrap-up-5-min">Act 5 — Wrap-up (5 min)</h2>
-<h3 id="screen-51-constat-slide-1-donut">Screen 5.1 — Constat slide 1 (donut)</h3>
-<p><strong>Show:</strong> slide "RAJA requirements: what SP and MCP each cover".</p>
-<p><strong>Say:</strong>
-"We went through your 100 requirements one by one, against the official documentation.
-Most of them, 65, are covered at the same level by both Salesforce products, Personalization and the Marketing
-Cloud Personalization you know. A few are better in one or the other. And 12 aren't covered by either today, like
-predicted replenishment or incremental revenue: we'd rather tell you now."</p>
-<h3 id="screen-52-constat-slide-2-why-sp">Screen 5.2 — Constat slide 2 (why SP)</h3>
-<p><strong>Show:</strong> slide "Why SP: what a feature list doesn't show".</p>
-<p><strong>Say:</strong>
-"So why Salesforce Personalization? Three reasons you saw today.
-One: it decides on Data 360 directly, with no sync in between.
-Two: deep-learning recommendations, including new products from day one.
-Three: one recommender for the website, the CRM and email. You saw the same products in all three."</p>
-<h3 id="screen-53-recap-of-the-use-cases">Screen 5.3 — Recap of the use cases</h3>
-<p><strong>Say:</strong>
-"To sum up your five use cases:
-set up, with three building blocks and a low-code editor;
-cross-channel, with one profile and one recommender everywhere;
-personalization, from an anonymous visitor's first click to a known buyer;
-variants: one product per family on the product page; for the parent/variant hierarchy, our product team can go
-deeper;
-and testing, with A/B tests and the limits we were honest about.
-Questions?"</p></main></body></html>
+"How do you know the AI does better? You test it, directly on the zone.
+Business as usual is our control group, versus the ML recommender.
+The primary metric, the one that decides the winner, is add to cart. Product views and purchases are secondary
+metrics: we follow them, but they don't decide.
+These dashboards are examples from another environment: our test started on 6 October and needs at least 14 days.
+Lift is the gain versus control. Chance to beat control is how sure we are, and we set the bar at 95% before we call
+a winner.
+Now our product management team will take over and share their screen to show you dashboards on A/B/n tests."</p>
+<p><strong>UC:</strong> UC5.</p></main></body></html>
